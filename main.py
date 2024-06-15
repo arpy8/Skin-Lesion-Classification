@@ -23,7 +23,9 @@ with st.container():
                 response.raise_for_status()
                 result = response.json()
                 st.info(f"""
-                **Label**: {result['label']}\n**Probability**: {round(result['confidence'], 4)*100}%
+                **Label**: {result['label']}
+                
+                **Probability**: {round(result['confidence'], 4)*100}%
                 """)
             except requests.exceptions.HTTPError as e:
                 st.error(f"HTTP Error: {e}")
