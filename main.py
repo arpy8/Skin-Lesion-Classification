@@ -22,6 +22,9 @@ with st.container():
                 response = requests.post(API_URL, headers=headers, files=files)
                 response.raise_for_status()
                 result = response.json()
+                if round(result['confidence'], 4)*100 < 75:
+                    st.warning("The image might not be of a skin lesion.")
+
                 st.info(f"""
                 **Label**: {result['label']}
                 
