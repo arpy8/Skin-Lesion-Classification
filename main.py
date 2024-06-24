@@ -28,8 +28,13 @@ with st.container():
                 st.info(f"""
                 **Label**: {result['label']}
                 
+                **Description**: {result['description']}
+                
                 **Probability**: {round(result['confidence'], 4)*100}%
                 """)
+                st.link_button("Know More", result['link'])
+                st.write(result)
+                
             except requests.exceptions.HTTPError as e:
                 st.error(f"HTTP Error: {e}")
             except Exception as e:
